@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Modelo de uso do MathJax (HTML+Latex)</title>
+
+  <!-- MATHJAX 3 (através da CDN) -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- MATHJAX 3 (salvo no computador) -->
+  <!-- <script type="text/javascript" async src="../../../Aplicativos/MathJax-master/es5/tex-mml-chtml.js" async></script> -->
+</head>
+
+<body style="max-width: 900px; text-align: justify; font-size: 1rem; margin-left: 20px;">
+
+  <h1>Exercícios</h1>
+
+  <h3>Questão 1.1.1</h3>
+  <p>
+    <pre style="color: #75757e; background-color: #ffffd6; margin-left: 20px;">
+    <code>
+    <span style="color: #e06040;">
+    /* A função sum recebe um inteiro n >= 1 e um vetor v e
+     * devolve o valor da soma de todos os elementos de v[0..n-1]. */
+    </span>
+    int sum (int n, int v[]) {
+      int i, x = 0;
+      for (i = 0; i < n; i++) x += v[i];
+      return x;
+    }
+    </code>
+    </pre>
+  </p>
+
+  <hr>
+
+  <h3>Questão 1.1.2 </h3>
+  <p>
+    <pre style="color: #75757e; background-color: #ffffd6; margin-left: 20px;">
+    <code>
+    <span style="color: #e06040;">
+    /* A função where recebe um inteiro x, um inteiro n >= 0 
+     * e um vetor v e devolve um inteiro j, tal que 0 <= j < n
+     * e v[j] == x. Se j não existe, devolve n */
+    </span>
+    int where (int x, int v[], int n) {
+      int j = 0;
+      while (j < n && v[j] != x) j += 1;
+      return j;
+    }
+    </code>
+    </pre>
+  </p>
+
+  <hr>
+
+  <h3>Questão 1.1.3 </h3>
+  <p style="margin-left: 20px;">
+    A documentação não explica a natureza dos dados de entrada e o papel
+    da variável <code>s</code> na função.
+  </p>
+
+  <hr>
+
+  <h3>Questão 1.1.4 </h3>
+  <p style="margin-left: 20px;">A documentação não restringe os valores da entrada, 
+    isto é, não sabemos se <code>p</code>, <code>q</code> e <code>r</code> 
+    são inteiros positivos ou negativos.
+  </p>
+
+  <hr>
+
+  <h3>Questão 1.2.1 </h3>
+  <p style="margin-left: 20px;">
+    Temos que mostrar a corretude da função <code>Max</code> através de sua invariante
+    <code style="display: block; text-align: center; margin-top: 5px;">x é um elemento máximo de v[0..j-1]</code>
+  </p>
+  <p style="margin-left: 20px;">
+    <strong>Caso Base: </strong> No início da primeira iteração, <code>j = 1</code>
+    e <code>x = v[0]</code>, logo <code>x</code> é um elemento máximo de 
+    <code>v[0..j-1]</code> uma vez que <code>v[0..j-1]</code> só tem um elemento,
+    que é o próprio <code>x</code>.
+  </p>
+  <p style="margin-left: 20px;">
+    <strong>Caso Indutivo: </strong> Para qualquer início de uma iteração 
+    <code>k</code> que não seja a primeira, isto é, para <code>k > 1</code>, 
+    <code>x</code> é um elemento máximo de <code>v[0..k-1]</code>. Logo, na 
+    próxima iteração (i.e. <code>k+1</code>), ou <code>x</code> continua sendo
+    um elemento máximo de <code>v[0..k]</code> ou <code>v[k]</code> é o novo elemento 
+    máximo e atribuímos seu valor a <code>x</code>, como queríaos provar.
+  </p>
+  <p style="margin-left: 20px;">Supondo que a invariante é válida no início da última iteração, isto é, 
+    <code>k = j - 1</code>. Logo ao terminar a iteração e por fim o laço, Temos
+    que x é um elemento máximo de <code>v</code>. Portanto a função está correta.
+  </p>
+
+  <h3>Questão 1.2.2 </h3>
+  <p>
+    <pre style="color: #75757e; background-color: #ffffd6; margin-left: 20px;">
+    <code>
+    <span style="color: #e06040;">
+    /* A função sum recebe um inteiro n >= 1 e um vetor v e
+     * devolve o valor da soma de todos os elementos de v[0..n-1]. */
+    </span>
+    int sum (int n, int v[]) {
+      int i, x = 0;
+      for (i = 0; i < n; i++) {
+        x += v[i];
+        <span style="color: #000000;">/* x é a soma dos elementos de v[0..i] */</span>
+      }
+      return x;
+    }
+    </code>
+    </pre>
+  </p>
+
+  <hr>
+
+  <h3>Questão 1.2.3 </h3>
+  <p>
+    <pre style="color: #75757e; background-color: #ffffd6; margin-left: 20px;">
+    <code>
+    <span style="color: #e06040;">
+    /* A função where recebe um inteiro x, um inteiro n >= 0 
+     * e um vetor v e devolve um inteiro j, tal que 0 <= j < n
+     * e v[j] == x. Se j não existe, devolve n */
+    </span>
+    int where (int x, int v[], int n) {
+      int j = 0;
+      while (<span style="color: #000000;">/*A*/</span> j < n && v[j] != x) {
+        <span style="color: #000000;">/*em A, <code>j <= n</code> e <code>v[j-1] != x</code> */</span>
+        j += 1;
+      }
+      return j;
+    }
+    </code>
+    </pre>
+  </p>
+
+
+</body>
+
+</html>
